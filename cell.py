@@ -4,3 +4,10 @@
 #-- Life status (alive/dead)
 #-- Position on grid (x, y) (Maybe posX and posY?)
 #-- Number of neighbors
+
+class Cell():
+    def __init__(alive, posX, posY, neighbors):
+        alive = 0
+        posX = 0
+        posY = 0
+        neighbors = 0
