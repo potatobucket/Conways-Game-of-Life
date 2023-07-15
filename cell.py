@@ -11,3 +11,8 @@ class Cell:
         self.posX = posX
         self.posY = posY
         self.neighbors = neighbors
+    def life_status(self):
+        if self.alive == False:
+            return "The cell is dead."
+        else:
+            return "The cell is alive."
