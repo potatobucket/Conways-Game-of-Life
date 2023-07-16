@@ -5,6 +5,10 @@ import numpy as np
 class Cell:
     def __init__(self):
         self.alive = rndm.choice([True, False])
+        if self.alive == False:
+            self.visual = "0"
+        else:
+            self.visual = "1"
     def life_status(self):
         if self.alive == False:
             return "The cell is dead."
@@ -16,6 +20,10 @@ class Cell:
 #-- so you have to create an empty array and then change all the elements to cells later
 testArray = np.full(shape = (2, 4), fill_value = "")
 testArray = testArray.tolist()
+
+#-- converts the life status of the elements of the cell array to something more visually-friendly
+visualArray = np.full(shape = (2, 4), fill_value = "")
+visualArray = visualArray.tolist()
 
 #-- gets the size of the created array in both dimensions
 rows = len(testArray)
@@ -29,4 +37,7 @@ for i in range(rows):
 #-- this is just for debugging purposes
 for a in range(rows):
     for b in range(columns):
-        print(testArray[a][b].alive)
+        visualArray[a][b] = testArray[a][b].visual
+
+for c in range(rows):
+    print(visualArray[c])
