@@ -5,11 +5,13 @@ import numpy as np
 class Cell:
     def __init__(self):
         self.alive = rndm.choice([True, False])
+        self.neighbors = 0
         if self.alive == False:
             self.visual = "▢"
         else:
             self.visual = "▣"
-        self.numberOfNeigbors = 0
+        self.coordinateX = 0
+        self.coodirnateY = 0
     def life_status(self):
         if self.alive == False:
             return "The cell is dead."
@@ -39,5 +41,5 @@ if __name__ == "__main__":
             visualArray[a][b] = testArray[a][b].visual
 
     #-- this is just for debugging purposes
-    # for c in range(rows):
-    #     print(visualArray[c])
+    for c in range(rows):
+        print(visualArray[c])
