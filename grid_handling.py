@@ -26,6 +26,7 @@ def get_visual_data_for_cells():
     for c in range(rows):
         print(visualArray[c])
 
+#-- checks each cell for living neighbors (only checks the inner cells but each cell does exclude itself)
 def neighborCheck():
     for w in range(1, rows - 1):
         for v in range(1, columns - 1):
@@ -33,6 +34,6 @@ def neighborCheck():
                 for z in range(-1, 2):
                     if cellGrid[w + z][v + y].alive == True and cellGrid[w + z][v + y] != cellGrid[w][v]:
                         cellGrid[w][v].neighbors += 1
-    for rowcheck in range(1, rows - 1):
-        for colcheck in range(1, columns - 1):
-            print(f"Number of neighbors for {rowcheck, colcheck}: {cellGrid[rowcheck][colcheck].neighbors}")
+    # for rowcheck in range(1, rows - 1):
+    #     for colcheck in range(1, columns - 1):
+    #         print(f"Number of neighbors for {rowcheck, colcheck}: {cellGrid[rowcheck][colcheck].neighbors}")
