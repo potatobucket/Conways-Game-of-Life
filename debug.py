@@ -7,8 +7,9 @@ os.system("cls")
 gh.populate_grid_with_cells()
 gh.get_visual_data_for_cells()
 
-for t in range(301):
-    os.system("cls")
-    gh.neighbor_check()
-    gh.update_grid()
-    slp(1.0)
+def run_game_for_(generations):
+    for t in range(generations):
+        os.system("cls")
+        gh.neighbor_check()
+        gh.update_grid()
+        slp(0.034)

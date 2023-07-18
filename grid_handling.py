@@ -1,4 +1,6 @@
 import numpy as np
+from time import sleep as slp
+import os
 import cell
 
 #-- determines the size of the grid
@@ -35,9 +37,6 @@ def neighbor_check():
                 for z in range(-1, 2):
                     if cellGrid[w + z][v + y].alive == True and cellGrid[w + z][v + y] != cellGrid[w][v]:
                         cellGrid[w][v].neighbors += 1
-    # for rowcheck in range(1, rows - 1):
-    #     for colcheck in range(1, columns - 1):
-    #         print(f"Number of neighbors for {rowcheck, colcheck}: {cellGrid[rowcheck][colcheck].neighbors}")
 
 #-- updates each cell in the grid('s center) relative to how many neighbors it has, updates the visual grid
 #-- and reprints it to the terminal
@@ -54,3 +53,11 @@ def update_grid():
                 cellGrid[gridRow][gridColumn].alive = True
                 cellGrid[gridRow][gridColumn].visual = "▣"
     get_visual_data_for_cells()
+
+#-- runs the game for the specified number of generations
+def run_game_for_(generations):
+    for t in range(generations + 1):
+        os.system("cls")
+        neighbor_check()
+        update_grid()
+        slp(0.034)
