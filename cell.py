@@ -4,7 +4,7 @@ import numpy as np
 #-- creates a cell object that is randomly alive or dead
 class Cell:
     def __init__(self):
-        self.alive = rndm.choice([True, False])
+        self.alive = rndm.choice([True, False, False, False])
         self.neighbors = 0
         if self.alive == False:
             self.visual = "▢"

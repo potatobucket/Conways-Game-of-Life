@@ -27,9 +27,10 @@ def get_visual_data_for_cells():
         print(visualArray[c])
 
 #-- checks each cell for living neighbors (only checks the inner cells but each cell does exclude itself)
-def neighborCheck():
+def neighbor_check():
     for w in range(1, rows - 1):
         for v in range(1, columns - 1):
+            cellGrid[w][v].neighbors = 0
             for y in range(-1, 2):
                 for z in range(-1, 2):
                     if cellGrid[w + z][v + y].alive == True and cellGrid[w + z][v + y] != cellGrid[w][v]:
@@ -46,7 +47,7 @@ def update_grid():
             if cellGrid[gridRow][gridColumn].alive == True and cellGrid[gridRow][gridColumn].neighbors == 2 or cellGrid[gridRow][gridColumn].alive == True and cellGrid[gridRow][gridColumn].neighbors == 3:
                 cellGrid[gridRow][gridColumn].alive = True
                 cellGrid[gridRow][gridColumn].visual = "▣"
-            if cellGrid[gridRow][gridColumn].alive == True and cellGrid[gridRow][gridColumn].neighbors <= 1 or cellGrid[gridRow][gridColumn].alive == True and cellGrid[gridRow][gridColumn].neighbors >= 4:
+            if cellGrid[gridRow][gridColumn].alive == True and cellGrid[gridRow][gridColumn].neighbors < 2 or cellGrid[gridRow][gridColumn].alive == True and cellGrid[gridRow][gridColumn].neighbors > 3:
                 cellGrid[gridRow][gridColumn].alive = False
                 cellGrid[gridRow][gridColumn].visual = "▢"
             if cellGrid[gridRow][gridColumn].alive == False and cellGrid[gridRow][gridColumn].neighbors == 3:
