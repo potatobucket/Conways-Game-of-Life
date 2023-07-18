@@ -7,6 +7,9 @@ import cell
 rows = int(input("How many rows?\n"))
 columns = int(input("How many columns?\n"))
 
+#-- determines how many generations pass in the simulation
+generations = int(input("How many generations would you like to simulate?\n"))
+
 #-- creates two grids: one for keeping track of a cell's data and one to track its visual status
 cellGrid = np.full(shape = (rows,columns), fill_value = "")
 cellGrid = cellGrid.tolist()
