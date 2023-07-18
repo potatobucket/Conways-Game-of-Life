@@ -37,3 +37,19 @@ def neighborCheck():
     # for rowcheck in range(1, rows - 1):
     #     for colcheck in range(1, columns - 1):
     #         print(f"Number of neighbors for {rowcheck, colcheck}: {cellGrid[rowcheck][colcheck].neighbors}")
+
+#-- updates each cell in the grid('s center) relative to how many neighbors it has, updates the visual grid
+#-- and reprints it to the terminal
+def update_grid():
+    for gridRow in range(1, rows - 1):
+        for gridColumn in range(1, columns - 1):
+            if cellGrid[gridRow][gridColumn].alive == True and cellGrid[gridRow][gridColumn].neighbors == 2 or cellGrid[gridRow][gridColumn].alive == True and cellGrid[gridRow][gridColumn].neighbors == 3:
+                cellGrid[gridRow][gridColumn].alive = True
+                cellGrid[gridRow][gridColumn].visual = "▣"
+            if cellGrid[gridRow][gridColumn].alive == True and cellGrid[gridRow][gridColumn].neighbors <= 1 or cellGrid[gridRow][gridColumn].alive == True and cellGrid[gridRow][gridColumn].neighbors >= 4:
+                cellGrid[gridRow][gridColumn].alive = False
+                cellGrid[gridRow][gridColumn].visual = "▢"
+            if cellGrid[gridRow][gridColumn].alive == False and cellGrid[gridRow][gridColumn].neighbors == 3:
+                cellGrid[gridRow][gridColumn].alive = True
+                cellGrid[gridRow][gridColumn].visual = "▣"
+    get_visual_data_for_cells()
