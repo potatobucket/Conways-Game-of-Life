@@ -26,18 +26,13 @@ def get_visual_data_for_cells():
     for c in range(rows):
         print(visualArray[c])
 
-# def grid_handling():
-    # for i in range(rows):
-    #     for j in range(columns):
-    #         if i == verticle and j == horizontal:
-    #             cellGridCopy[i][j] = "1"
-    #         if i == verticle + 1 and j == horizontal + 1 or i == verticle - 1 and j == horizontal - 1:
-    #             cellGridCopy[i][j] = "*"
-    #         if i == verticle - 1 and j == horizontal + 1 or i == verticle + 1 and j == horizontal - 1:
-    #             cellGridCopy[i][j] = "*"
-    #         if i == verticle and j == horizontal + 1 or i == verticle + 1 and j == horizontal:
-    #             cellGridCopy[i][j] = "*"
-    #         if i == verticle - 1 and j == horizontal or i == verticle and j == horizontal - 1:
-    #             cellGridCopy[i][j] = "*"
-#     for square in cellGridCopy:
-#         print(square)
+def neighborCheck():
+    for w in range(1, rows - 1):
+        for v in range(1, columns - 1):
+            for y in range(-1, 2):
+                for z in range(-1, 2):
+                    if cellGrid[w + z][v + y].alive == True and cellGrid[w + z][v + y] != cellGrid[w][v]:
+                        cellGrid[w][v].neighbors += 1
+    for rowcheck in range(1, rows - 1):
+        for colcheck in range(1, columns - 1):
+            print(f"Number of neighbors for {rowcheck, colcheck}: {cellGrid[rowcheck][colcheck].neighbors}")
